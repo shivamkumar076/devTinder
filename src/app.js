@@ -1,8 +1,14 @@
 const express=require("express");
 const app=express();
-app.use((req,res)=>{
-    res.send("this is server");
+app.get("/user/:id",(req,res)=>{
+    console.log(req.params);
+    res.send({
+        firstname:"shivam",
+        lastname:"kumar"
+        
+    });
 }) 
+
 
 
 app.listen(3000, ()=>{
