@@ -17,8 +17,6 @@ const connectionRequest=new mongoose.Schema({
             message:`{values} is incorrect status type`
         }
     },
-
-
 },
 {
     timestamps:true,

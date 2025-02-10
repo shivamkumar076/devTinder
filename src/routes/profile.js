@@ -4,7 +4,6 @@ const {userAuth}=require("../middlewares/auth");
 const {validEditProfileData}=require("../utils/validation");
 // const bcrypt=require('bcrypt');
 const {checkBlacklist}=require("../middlewares/checkBlackList");
-
 profileRouter.get("/profile/view",checkBlacklist,userAuth,async (req,res)=>{
     try{
       const user=req.user;
@@ -22,8 +21,6 @@ profileRouter.patch("/profile/edit",checkBlacklist,userAuth,async(req,res)=>{
     Object.keys(req.body).forEach((key)=>(loggedInUser[key]=req.body[key]));
     await loggedInUser.save();
     res.send(`${loggedInUser.firstName},your profile Update Successfully`);
-
-
   }catch(err){
     res.status(401).send("error"+err.message)
   }

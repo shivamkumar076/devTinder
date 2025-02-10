@@ -43,7 +43,6 @@ requestRouter.post("/request/send/:status/:toUserId",checkBlacklist,
             message:"connection request sent successfully", 
             data,
         })
-
     }catch(err){
         res.status(400).send("ERROR "+err);
     }
@@ -66,7 +65,6 @@ requestRouter.post("/request/review/:status/:requestId",checkBlacklist,
             _id:requestId,
             toUserId:loggedInUser._id,
             status:"interested",
-
         });
         if(!connectionRequest){
             return res.status(404).json({
@@ -78,7 +76,6 @@ requestRouter.post("/request/review/:status/:requestId",checkBlacklist,
         res.json({
             message:"connection request "+ status,data
         })
-
     }catch(err){
         res.status(400).send("Error"+err.message);
     }

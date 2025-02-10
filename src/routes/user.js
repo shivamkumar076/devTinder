@@ -4,10 +4,7 @@ const { userAuth } = require("../middlewares/auth");
 const User = require("../models/user");
 const userRouter = express.Router();
 const USER_SAFE_DATA = "firstName lastName photoUrl age gender about skills";
-// const ConnectionRequestModel=require("../models/connectionRequest");
 const connectionRequestmodel = require("../models/connectionRequest");
-//get all the pending connection request for the logged in user
-
 userRouter.get(
   "/user/requests/received",
   checkBlacklist,
@@ -46,7 +43,7 @@ userRouter.get(
         })
         .populate("fromUserId", USER_SAFE_DATA)
         .populate("toUserId", USER_SAFE_DATA);
-    
+
       const data = connectionRequest.map((row) => {
         if (row.fromUserId._id.toString() === loggedInUser._id.toString()) {
           return row.toUserId;

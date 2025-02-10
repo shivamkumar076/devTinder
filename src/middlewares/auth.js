@@ -2,23 +2,10 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const userAuth = async (req, res, next) => {
   try {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    // let token;
-
-    // // Get token from Authorization header
-    // if (
-    //   req.headers.authorization &&
-    //   req.headers.authorization.startsWith("Bearer")
-    // ) {
-    //   token = req.headers.authorization.split(" ")[1];
-    // }
-    // // Fallback to cookies
-    // else if (req.cookies && req.cookies.token) {
-    //    token = req.cookies.token;
-    // }
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
     if (!token) {
-      return res.status(401).json({error:'access denied'});
+      return res.status(401).json({ error: "access denied" });
     }
     const decodeData = await jwt.verify(token, "Shivam@123");
 
