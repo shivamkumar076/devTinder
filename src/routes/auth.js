@@ -32,12 +32,12 @@ authRouter.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
     const user = await User.findOne({ emailId: emailId });
-    console.log(user);
+  
     if (!user) {
       throw new Error("invalid credential");
     }
     const ispassword = await user.validatePassword(password);
-    console.log(ispassword);
+    
     if (ispassword) {
       const token = await user.getJWT();
       res.json({
